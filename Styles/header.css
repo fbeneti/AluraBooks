@@ -1,0 +1,166 @@
+.container {
+    display:                flex;
+    align-items:            center;
+}
+
+.cabecalho {
+    display:                flex;
+    justify-content:        space-between;
+    align-items:            center;
+    position:               relative;
+    background-color:       var(--branco);
+}
+
+.cabecalho__menu-hamburguer {
+    display:                inline-block;
+    background-image:       url("../Assets/Menu.svg");
+    background-repeat:      no-repeat;
+    background-position:    center;
+    width:                  24px;
+    height:                 24px;
+}
+
+.container__titulo,
+.container__texto {
+    display:                none;
+}
+
+.container__imagem {
+    padding:                .5em;
+}
+
+.container__botao {
+    display:                none;
+}
+
+.container__botao:checked~ .container__rotulo {
+    background:             var(--azul-gradiente);
+}
+
+.container__botao:checked~ .container__rotulo>.cabecalho__menu-hamburguer {
+    background-image:       url("../assets/Menu Aberto.png");
+}
+
+/*para gerar um menu que "aparece e desaparece" */
+.lista-menu {
+    display:                none;
+    position:               absolute;
+    top:                    100%;
+    width:                  60vw;
+}
+
+/* ~ equivale a uma condição (se o que está antes do ~ for verdade, então...) */
+.container__botao:checked~.lista-menu {
+    display:                block;
+}
+
+.lista-menu__titulo {
+    color:                  var(--laranja);
+    background-color:       var(--branco);
+    padding:                1em;
+    font-weight:            700;
+}
+
+.lista-menu__item {
+    background-color:           var(--branco);
+    padding:                    1em;
+}
+
+.lista-menu__link {
+    background:                 var(--azul-gradiente);
+    background-clip:            text;
+    -webkit-background-clip:    text;
+    -webkit-text-fill-color:    transparent;
+    text-transform:             uppercase;
+}
+
+.opcoes {
+    display:                    none;
+}
+
+@media screen and (min-width: 1024px) {
+    .cabecalho__menu-hamburguer {
+        display:                    none;
+    }
+    
+    .container__titulo,
+    .container__titulo--negrito {
+        font-family:                var(--fonte-secundaria);
+        font-size:                  30px;
+    }
+
+    .container__titulo {
+        display:                    block;
+        font-weight:                400;
+    }
+
+    .container__titulo--negrito {
+        font-weight:                700;
+    }
+
+    .container__imagem-transparente{
+        display:                    none;
+    }
+
+    .opcoes {
+        display:                    flex;
+    }
+
+    .opcoes__item {
+        padding:                    2em 1em;
+        text-transform:             uppercase;
+    }
+
+    .opcoes__link {
+        color:                      var(--preto);
+        text-decoration:            none;
+    }
+
+    .opcoes__botao {
+        display:                    none;
+    }
+
+    .opcoes__botao:checked~ .lista-menu {
+        display:                    block;
+        width:                      auto;
+    }
+
+    .opcoes__botao:checked~ .opcoes__rotulo>.opcoes__item {
+        color:                      var(--branco);
+        background:                 var(--azul-gradiente);    
+    }
+
+    .lista-menu__item:hover {
+        background:                 var(--azul-gradiente);
+    }
+
+    .lista-menu__item:hover>.lista-menu__link {
+       -webkit-text-fill-color:     var(--branco);
+       text-decoration:             none; 
+    }
+}
+
+@media screen and (min-width: 1728px) {
+    .cabecalho {
+        padding:                    0 2em;
+    }
+
+    .container__texto {
+        display:                    block;
+    }
+
+    .container__link {
+        display:                    flex;
+        align-items:                center;
+        color:                      var(--preto);
+        text-decoration:            none;
+    }
+
+    .opcoes {
+        /* Para alinhar um item que está centralizado, jogando para a direita,
+         * posso preencher toda a margem da DIREITA, utilizando o margin-right
+         */ 
+        margin-right:               auto;
+    }
+
+}
